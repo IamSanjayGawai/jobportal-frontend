@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
-function Navbar({ handleLogout}) {
+function Header({ handleLogout}) {
 
     const isLoggedIn = useSelector(state => state.job.isLoggedIn);
 
@@ -17,12 +17,7 @@ function Navbar({ handleLogout}) {
                                     </div>
                                     <div className="col-6 ">
                                         <div className="navbar-nav d-flex flex-row justify-content-end align-items-center gap-2">
-
-                                    
-                                            <Link className="nav-link " to="/login"><b>Login</b></Link>
-                            
-                                            <Link className="nav-link  text-primary" to="/register"><b>Signup</b></Link>
-                                        
+                                            <div onClick={handleLogout} className="nav-link  text-primary"><b>Logout</b></div>
                                          </div>
                                     </div>
                                 </div>
@@ -33,4 +28,4 @@ function Navbar({ handleLogout}) {
       );
 }
 
-export default Navbar;
+export default Header;
