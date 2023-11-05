@@ -17,6 +17,15 @@ function Login() {
   });
 
 
+  useEffect(() => {
+    // Check if the user is already logged in based on your authentication logic
+    const token = localStorage.getItem('token');
+    if (token) {
+      // Redirect the user to their profile page
+      navigate('/'); // Replace 'profile' with the actual profile page URL
+    }
+  }, []);
+
 
   const getUserData = (e) => {
     // Use the spread operator to update the state object
@@ -27,7 +36,6 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       // Dispatch the loginUser action with userData
       const resultAction = await dispatch(loginUser(userData));

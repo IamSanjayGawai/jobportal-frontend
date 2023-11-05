@@ -1,7 +1,8 @@
 import Hero_image from '../../assets/images/hero-image.png'
 import JobCard from '../../components/JobCard';
 import Navbar from '../../components/Navbar'
-import { useDispatch } from 'react-redux';
+import Header from '../../components/Header'
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser, isLoggedInAction } from '../../redux/reducers/jobReducer';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -10,6 +11,7 @@ function Home() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isLoggedIn = useSelector(state => state.job.isLoggedIn);
 
     const handleLogout = async (e) => {
         e.preventDefault();
@@ -29,8 +31,10 @@ function Home() {
                 {/* Hero */}
                 <div className="row" style={{ height: '100vh' }} >
                     {/* Navbar */}
-
-                    <Navbar handleLogout={handleLogout} />
+ {
+    isLoggedIn ? <Navbar/> : <Header handleLogout={handleLogout} />
+ }
+                  
                     {/* Hero Content  */}
                     <div className="col-12 " style={{ height: '85%' }}>
                         <div className="row" style={{ height: '100%' }}>
